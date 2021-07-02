@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'rest-client'
-
+require 'json'
 require 'csiconnect/token'
 require 'csiconnect/company'
 require 'csiconnect/virtual_card'
@@ -83,11 +83,11 @@ module Csiconnect
       end
 
       json_payload = payload.to_json if payload
-        
+
       RestClient::Request.new({
-        method: method, 
-        url: "#{api_base_url}/#{resource}", 
-        headers: headers, 
+        method: method,
+        url: "#{api_base_url}/#{resource}",
+        headers: headers,
         payload: json_payload
       }).execute do |response, request, result|
         JSON.parse(response.to_str) if response
