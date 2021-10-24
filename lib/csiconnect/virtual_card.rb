@@ -35,7 +35,7 @@ module Csiconnect
         raise 'amount is missing' unless params[:amount]
         response = Csiconnect.request(:put, "v2/virtualCards/#{card_id}", params)
         return response
-      
+      end
     end
   end
 end
