@@ -14,6 +14,10 @@ module Csiconnect
         response = Csiconnect.request(:get, "v2/tokens", params)
       end
 
+      def delete(params = {})
+        raise 'token is missing' unless params[:token]
+        response = Csiconnect.request(:delete, "v2/tokens", params)
+      end
     end
   end
 end
