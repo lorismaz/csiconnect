@@ -21,6 +21,7 @@ module Csiconnect
       # https://api.docs.globalvcard.com/reference#create-a-card
       def create(params = {})
         raise 'token is missing' unless params[:token]
+        raise 'serial_class_code is missing' unless params[:pps_serialClassCode]
         raise 'amount is missing' unless params[:amount]
         raise 'exactAmount is missing' unless params[:exactAmount]
         raise 'firstName is missing' unless params[:firstName]

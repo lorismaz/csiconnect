@@ -24,6 +24,7 @@ Set up an initializer file with your CSI Connect / GlobalVCard virtual card syst
 Csiconnect.api_base_url = 'https://partners.gvcdemo.com'
 Csiconnect.username  = 'CSI Paysystems username'
 Csiconnect.password  = 'CSI Paysystems password'
+Csiconnect.serial_class_code = "ERCP_B2B_VCN_EUR_3DS"
 ```
 e.g. *config/initializers/csiconnect.rb*
 
@@ -84,6 +85,7 @@ params = {
   "lastName": "Smith",   
   "expirationMonth": 4,   
   "expirationYear": 2025, 
+  "pps_serialClassCode": "ERCP_B2B_VCN_EUR_3DS",
   "token": token
 }
 vcard = Csiconnect::VirtualCard.create(params)
