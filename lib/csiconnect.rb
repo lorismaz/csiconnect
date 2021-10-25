@@ -64,7 +64,7 @@ module Csiconnect
         ArgumentError, "Request resource has not been specified"
       )
       if method == :get
-        headers = {accept: :json, content_type: :json}.merge({params: params})
+        headers = {accept: :json, content_type: :json}
         payload = nil
       else
         headers = {accept: :json, content_type: :json}
