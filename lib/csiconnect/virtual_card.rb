@@ -6,7 +6,7 @@ module Csiconnect
       # https://api.docs.globalvcard.com/reference/show-cards
       def list(params = {})
         raise 'token is missing' unless params[:token]
-        response = Csiconnect.request(:get, "v2/virtualCards")
+        response = Csiconnect.request(:get, "v2/virtualCards", params)
         return response
       end
 
@@ -14,7 +14,7 @@ module Csiconnect
       def details(id, params = {})
         raise 'token is missing' unless params[:token]
         raise 'card id is missing' unless id
-        response = Csiconnect.request(:get, "v2/virtualCards/#{id}")
+        response = Csiconnect.request(:get, "v2/virtualCards/#{id}", params)
         return response
       end
 
@@ -35,7 +35,7 @@ module Csiconnect
       def block(card_id, params = {})
         raise 'token is missing' unless params[:token]
         raise 'card_id is missing' unless card_id
-        response = Csiconnect.request(:put, "v2/virtualCards/#{card_id}/block")
+        response = Csiconnect.request(:put, "v2/virtualCards/#{card_id}/block", params)
         return response
       end
       
@@ -43,7 +43,7 @@ module Csiconnect
       def unblock(card_id, params = {})
         raise 'token is missing' unless params[:token]
         raise 'card_id is missing' unless card_id
-        response = Csiconnect.request(:put, "v2/virtualCards/#{card_id}/unblock")
+        response = Csiconnect.request(:put, "v2/virtualCards/#{card_id}/unblock", params)
         return response
       end
 
