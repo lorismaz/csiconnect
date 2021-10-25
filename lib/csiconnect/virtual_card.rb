@@ -2,6 +2,22 @@ module Csiconnect
   class VirtualCard
     
     class << self
+
+      # https://api.docs.globalvcard.com/reference/show-cards
+      def list(params = {})
+        raise 'token is missing' unless params[:token]
+        response = Csiconnect.request(:get, "v2/virtualCards")
+        return response
+      end
+
+      # https://api.docs.globalvcard.com/reference/show-cards
+      def details(id, params = {})
+        raise 'token is missing' unless params[:token]
+        raise 'card id is missing' unless id
+        response = Csiconnect.request(:get, "v2/virtualCards/#{id}")
+        return response
+      end
+
       # https://api.docs.globalvcard.com/reference#create-a-card
       def create(params = {})
         raise 'token is missing' unless params[:token]
@@ -16,14 +32,16 @@ module Csiconnect
       end
 
       # https://api.docs.globalvcard.com/reference/block-or-unblock-a-card
-      def block(card_id)
+      def block(card_id, params = {})
+        raise 'token is missing' unless params[:token]
         raise 'card_id is missing' unless card_id
         response = Csiconnect.request(:put, "v2/virtualCards/#{card_id}/block")
         return response
       end
       
       # https://api.docs.globalvcard.com/reference/block-a-virtualcard
-      def unblock(card_id)
+      def unblock(card_id, params = {})
+        raise 'token is missing' unless params[:token]
         raise 'card_id is missing' unless card_id
         response = Csiconnect.request(:put, "v2/virtualCards/#{card_id}/unblock")
         return response
@@ -31,6 +49,7 @@ module Csiconnect
 
       # https://api.docs.globalvcard.com/reference/create-a-card-1
       def update(card_id, params = {})
+        raise 'token is missing' unless params[:token]
         raise 'card_id is missing' unless card_id
         raise 'amount is missing' unless params[:amount]
         response = Csiconnect.request(:put, "v2/virtualCards/#{card_id}", params)
