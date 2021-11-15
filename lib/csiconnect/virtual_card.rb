@@ -18,6 +18,12 @@ module Csiconnect
         return response
       end
 
+      def activity(id, params = {})
+        raise "token is missing" unless params[:token]
+        raise "card id is missing" unless id
+        Csiconnect.request(:get, "v2/virtualCards/#{id}/activity", params)
+      end
+
       # https://api.docs.globalvcard.com/reference#create-a-card
       def create(params = {})
         raise 'token is missing' unless params[:token]
