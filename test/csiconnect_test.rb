@@ -113,6 +113,7 @@ class CsiconnectTest < Minitest::Test
       expirationMonth: 1,
       expirationYear: 2025,
       token: '9876543210',
+      pps_serialClassCode: "ERCP_B2B_VCN_EUR_3DS"
     }
     response = Csiconnect::VirtualCard.create(params)
     assert_equal response['cardNumber'], '0123456789'
