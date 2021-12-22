@@ -6,7 +6,7 @@ module Csiconnect
       # https://api.docs.globalvcard.com/reference/show-cards
       def list(params = {})
         raise 'token is missing' unless params[:token]
-        response = Csiconnect.request(:get, "v2/virtualCards", params)
+        response = Csiconnect.request(:get, "v2/virtualCards?per_page=1000", params)
         return response
       end
 
