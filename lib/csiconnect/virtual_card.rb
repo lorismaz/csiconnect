@@ -54,6 +54,14 @@ module Csiconnect
         return response
       end
 
+      # https://api.docs.globalvcard.com/reference/block-card-and-return-funds
+      def blockAndReturnFunds(card_id, params = {})
+        raise 'token is missing' unless params[:token]
+        raise 'card_id is missing' unless card_id
+        response = Csiconnect.request(:put, "v2/virtualCards/#{card_id}/blockAndReturnFunds", params)
+        return response
+      end
+
       # https://api.docs.globalvcard.com/reference/create-a-card-1
       def update(card_id, params = {})
         raise 'token is missing' unless params[:token]
